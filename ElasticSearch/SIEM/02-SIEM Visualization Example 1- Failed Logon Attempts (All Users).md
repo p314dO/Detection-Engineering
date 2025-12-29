@@ -79,13 +79,52 @@ Let's not forget to save the dashboard as well. We can do so by simply clicking 
 ### Refining The Visualization
 Suppose the SOC Manager suggested the following refinements:
 
-Clearer column names should be specified in the visualization
-The Logon Type should be included in the visualization
-The results in the visualization should be sorted
-The **DESKTOP-DPOESND**, **WIN-OK9BH1BCKSD**, and **WIN-RMMGJA7T9TC** usernames should not be monitored
-Computer accounts should not be monitored (not a good practice).
+- Clearer column names should be specified in the visualization  
+- The Logon Type should be included in the visualization  
+- The results in the visualization should be sorted  
+- The **DESKTOP-DPOESND**, **WIN-OK9BH1BCKSD**, and **WIN-RMMGJA7T9TC** usernames should not be monitored  
+- Computer accounts should not be monitored (not a good practice).
 
 Let's refine the visualization we created, so that it fulfills the suggestions above.
 
-![alt text](image.png)
+![alt text](./images/image15.png)
 
+![alt text](./images/image16.png)
+
+"Top values of user.name.keyword" should be changed as follows.
+
+![alt text](./images/image.png)
+
+![alt text](./images/image-1.png)
+
+"Top values of host.hostname.keyword" should be changed as follows.
+
+![alt text](./images/image-2.png)
+
+![alt text](./images/image-3.png)
+
+The "Logon Type" can be added as follows (we will use the winlog.logon.type.keyword field).
+
+![alt text](./images/image-4.png)
+
+"Count of records" should be changed as follows.
+
+![alt text](./images/image-5.png)
+
+![alt text](./images/image-6.png)
+
+All we have to do now is click on "Save and return".
+
+---
+
+The DESKTOP-DPOESND, WIN-OK9BH1BCKSD, and WIN-RMMGJA7T9TC usernames can be excluded by specifying additional filters as follows.
+
+![alt text]./images/(image-7.png)
+
+Computer accounts can be excluded by specifying the following KQL query and clicking on the "Update" button.
+
+```
+NOT user.name: *$ AND winlog.channel.keyword: Security
+```
+This is our visualization after all the refinements we performed.
+![alt text](./images/image-8.png)
